@@ -68,9 +68,19 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = function (array, className) {
+  var menu = document.createElement("ul");
+  menu.className = className;
+  var listItems = "";
+  array.forEach(function(item) {
+    listItems += "<li>" + item + "</li>";
+  });
+  menu.innerHTML = listItems;
+  return menu;
+};
 
 /***/ }),
 /* 1 */
@@ -78,10 +88,9 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_menu_menu__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_menu_menu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_menu_menu__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_menu_index__ = __webpack_require__(0);
 
-var menu = __WEBPACK_IMPORTED_MODULE_0__components_menu_menu___default()(["Main", "Blog"], "menu");
+var menu = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__components_menu_index__["a" /* default */])(["Main", "Blog"], "menu");
 document.body.appendChild(menu);
 console.log("in blog js")
 
