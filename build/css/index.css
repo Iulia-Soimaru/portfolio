@@ -1,0 +1,8 @@
+ul {
+  border: 1px solid lightblue; }
+  ul li {
+    display: inline-block;
+    padding: 5px 10px;
+    background: lightgrey; }
+body {
+  background: yellow; }
