@@ -7,10 +7,14 @@ const sass = require("./webpack/sass");
 const extractCSS = require("./webpack/css.extract");
 const css = require("./webpack/css");
 const uglifyJS = require("./webpack/js.uglify");
+const lintJS = require("./webpack/js.lint");
+const lintCSS = require("./webpack/sass.lint");
+const images = require("./webpack/images");
+const favicon = require("./webpack/favicon");
 const webpack = require("webpack");
 const PATHS = {
   source: path.join(__dirname, "source"),
-  build: path.join(__dirname, "build")
+  build: path.join(__dirname, "build"),
 };
 
 module.exports = function(env) {
@@ -18,17 +22,19 @@ module.exports = function(env) {
     return merge([
       common,
       extractCSS(),
-      uglifyJS({ useSourceMap: true})
+      uglifyJS({ useSourceMap: true}),
+      favicon()
     ]);
-  };
+  }
   if (env == "development") {
     return merge([
       common,
+      developmentConfig,
       devserver(),
       sass(),
-      css()
+      css(),
     ]);
-  };
+  }
 };
 
 const common = merge([
@@ -39,35 +45,38 @@ const common = merge([
     },
     output: {
       path: PATHS.build,
-      filename: "./js/[name].js"
+      filename: "./js/[name].js",
     },
     plugins: [
       new HtmlWebpackPlugin({
         filename: "index.html",
         chunks: ["index"],
-        template: PATHS.source + "/pages/index/index.pug"
+        template: PATHS.source + "/pages/index/index.pug",
       }),
       new HtmlWebpackPlugin({
         filename: "blog.html",
         chunks: ["blog"],
-        template: PATHS.source + "/pages/blog/blog.pug"
+        template: PATHS.source + "/pages/blog/blog.pug",
       }),
       new webpack.optimize.CommonsChunkPlugin({
-        name: "common"
+        name: "common",
       }),
       new webpack.ProvidePlugin({
         $: "jquery",
-        jQuery: "jquery"
-      })
-    ]
+        jQuery: "jquery",
+      }),
+    ],
   },
-  pug()
+  pug(),
+  lintJS({ paths: PATHS.sources }),
+  lintCSS(),
+  images()
 ]);
 
 const developmentConfig = {
   devServer: {
-    stats: "errors-only"
-  }
+    stats: "errors-only",
+  },
 };
 
 

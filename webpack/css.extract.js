@@ -18,13 +18,13 @@ module.exports = function(paths) {
           include: paths,
           use: ExtractTextPlugin.extract({
             fallback: "style-loader",
-            use: "css-loader"
+            use: "css-loader",
           }),
         },
       ],
     },
     plugins: [
       new ExtractTextPlugin("./css/[name].css"),
-    ]
+    ],
   };
 };
