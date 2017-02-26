@@ -4,7 +4,7 @@ module.exports = function(paths) {
       rules: [
         {
           test: /\.css$/,
-          include: oaths,
+          include: paths,
           use: [
             "style-loader",
             "css-loader"

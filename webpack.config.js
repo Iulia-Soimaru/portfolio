@@ -6,6 +6,8 @@ const devserver = require("./webpack/devserver");
 const sass = require("./webpack/sass");
 const extractCSS = require("./webpack/css.extract");
 const css = require("./webpack/css");
+const uglifyJS = require("./webpack/js.uglify");
+const webpack = require("webpack");
 const PATHS = {
   source: path.join(__dirname, "source"),
   build: path.join(__dirname, "build")
@@ -15,7 +17,8 @@ module.exports = function(env) {
   if (env == "production") {
     return merge([
       common,
-      extractCSS()
+      extractCSS(),
+      uglifyJS({ useSourceMap: true})
     ]);
   };
   if (env == "development") {
@@ -48,6 +51,13 @@ const common = merge([
         filename: "blog.html",
         chunks: ["blog"],
         template: PATHS.source + "/pages/blog/blog.pug"
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "common"
+      }),
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
       })
     ]
   },
