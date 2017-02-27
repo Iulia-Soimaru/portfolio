@@ -1,26 +1,153 @@
 .wrapper {
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   overflow: hidden;
   position: relative;
-}
-
-.hero-parallax {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // height: 100%;
 }
 
 .hero-parallax__layer {
   position: absolute;
   top: 0;
   left: 0;
-  & > img {width: 100%;}
-  // position: absolute;
-  // left: 50%;
-  // width: 4000px;
-  // height: 100%;
-  // margin-left: -2000px;
+
+  > img {
+    width: 100%;
+  }
+}
+
+.user-card {
+  position: relative;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: .7;
+    z-index: -1;
+  }
+
+  .user-card__picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  svg:not(.icon) {
+    display: none;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.about {
+  .about__triangle {
+    position: relative;
+    text-align: center;
+    height: 100px;
+    width: 100%;
+    top: -50px;
+    margin-bottom: -90px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      background: #f3f3f3;
+      transform: skew(0deg, 6deg);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 50%;
+      background: #e8e8e8;
+      transform: skew(0deg, -6deg);
+    }
+  }
+
+  .about__content {
+    display: flex;
+
+    > div {
+      width: 50%;
+      z-index: 10;
+      padding: 20px;
+    }
+
+    .about__title {
+      text-align: center;
+      position: relative;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        height: 5px;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        top: 7px;
+        width: 35%;
+      }
+
+      &::before {
+        right: 0;
+      }
+
+      &::after {
+        left: 0;
+      }
+    }
+  }
+
+  .about__user {
+    background: #f3f3f3;
+  }
+
+  .about__skills {
+    background: #e8e8e8;
+  }
+
+  .skill {
+    .skill__circle {
+      width: 120px;
+      height: 120px;
+      fill: transparent;
+      stroke-width: 15;
+      transform: rotate(-90deg);
+    }
+
+    .skill__circle-under {
+      stroke: #f6f6f6;
+    }
+
+    .skill__circle-above {
+      stroke: #5b92d2;
+      stroke-dasharray: 250;
+      // animation: circularProgressAnimate 1200ms cubic-bezier(0.99, 0.01, 0.62, 0.94) 0.5s forwards;
+      // transition: stroke-dasharray 400ms ease-in-out;
+    }
+  }
 }

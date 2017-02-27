@@ -1,12 +1,20 @@
 extends ../base
-mixin hero_layers(layers)
-  each layer, ind in layers
-    .hero-parallax__layer
-      img(src=`source/images/hero_layers/${layer}.png`)
-
 block title
   | Home Page
 block main
   .wrapper
     #hero-parallax.hero-parallax
-      +hero_layers(["layer-0", "layer-6", "layer-5", "layer-4", "layer-3", "layer-8", "layer-9", "layer-2", "layer-1", "layer-7"])
+      include ../../mixins/hero_layers
+    include ../../mixins/user_card
+  section.about
+    .about__triangle
+    .about__content
+      .about__user
+        h3.about__title About me
+        p.about__text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .about__skills
+        h3.about__title My Skills
+        .skill
+          svg.skill__circle
+            circle(cx="60" cy="60" r="50").skill__circle-under
+            circle(cx="60" cy="60" r="50").skill__circle-above

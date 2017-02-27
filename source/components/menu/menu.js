@@ -1,11 +1,11 @@
 import "./menu.scss";
 
-export default function (array, className) {
+export default function (array) {
   var menu = document.createElement("ul");
-  menu.className = className;
+  menu.className = "menu";
   var listItems = "";
   array.forEach(function(item) {
-    listItems += "<li>" + item + "</li>";
+    listItems += "<li class='menu__item'>" + item + "</li>";
   });
   menu.innerHTML = listItems;
   return menu;

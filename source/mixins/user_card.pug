@@ -1,0 +1,19 @@
+mixin user_card(social_links)
+  .user-card
+    img.user-card__picture(src="source/images/iulia-prof-small.png")
+    .user-card__name Iulia Soimaru
+    .user-card__title Front End Software Engineer
+    .user-card__social
+      each link_ref in social_links
+        a.user-card__link(href=`${link_ref[0]}`)
+          svg.icon
+            use(xlink:href=`#${link_ref[1]}`)
+
+-
+  var social = {
+    email: ["mailto:iulia.soimaru@gmail.com", "email"],
+    github: ["https://github.com/Iulia-Soimaru", "github"],
+    linkedin: ["https://www.linkedin.com/in/iuliasoimaru", "linkedin"]
+  }
+
++user_card(social)

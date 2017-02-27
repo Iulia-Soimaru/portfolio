@@ -1,7 +1,10 @@
-ul {
+.menu {
+  position: absolute;
+  top: 0;
+  width: 100%;
   border: 1px solid lightblue;
 
-  li {
+  .menu__item {
     display: inline-block;
     padding: 5px 10px;
     background: lightgrey;
