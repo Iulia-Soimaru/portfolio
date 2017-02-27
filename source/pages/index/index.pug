@@ -1,6 +1,12 @@
 extends ../base
+mixin hero_layers(layers)
+  each layer, ind in layers
+    .hero-parallax__layer
+      img(src=`source/images/hero_layers/${layer}.png`)
+
 block title
-  | Index page
+  | Home Page
 block main
-  h1 page index-pug
-  img(src=require("./webpack.svg") width="100")
+  .wrapper
+    #hero-parallax.hero-parallax
+      +hero_layers(["layer-0", "layer-1", "layer-2", "layer-3", "layer-4", "layer-5", "layer-6", "layer-7", "layer-8", "layer-9"])

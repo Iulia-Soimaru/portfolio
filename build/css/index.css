@@ -1,5 +1,19 @@
-body {
-  background: yellow; }
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative; }
 
-h1 {
-  color: #ff0000; }
+.hero-parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.hero-parallax__layer {
+  position: absolute;
+  left: 50%;
+  width: 4000px;
+  height: 100%;
+  margin-left: -2000px; }

@@ -50,12 +50,12 @@ const common = merge([
     plugins: [
       new HtmlWebpackPlugin({
         filename: "index.html",
-        chunks: ["index"],
+        chunks: ["index", "common"],
         template: PATHS.source + "/pages/index/index.pug",
       }),
       new HtmlWebpackPlugin({
         filename: "blog.html",
-        chunks: ["blog"],
+        chunks: ["blog", "common"],
         template: PATHS.source + "/pages/blog/blog.pug",
       }),
       new webpack.optimize.CommonsChunkPlugin({
